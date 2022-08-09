@@ -8,6 +8,11 @@ app.get("/", function(req, res){
 
     https.get(URL, function(response){
         console.log(response.statusCode)
+
+        response.on("data", function(data){
+            const weatherData = JSON.parse(data);
+            console.log(weatherData.weather[0].description)
+        })
     })
     res.sendFile(__dirname+"/index.html")
 })

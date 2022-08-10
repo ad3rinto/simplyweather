@@ -12,9 +12,10 @@ app.get("/", function(req, res){
         response.on("data", function(data){
             const weatherData = JSON.parse(data);
             console.log(weatherData.weather[0].description)
+            const temp = weatherData.main.temp
+            res.send(`<h1>The current temperature in your area is ${temp} degrees Celcius</h1>`)
         })
     })
-    res.sendFile(__dirname+"/index.html")
 })
 
 
